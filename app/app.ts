@@ -15,12 +15,12 @@ app.register(fastifyCors, {
 
 app.register(apiRoutes, {prefix: API.VERSION_V1});
 
-app.setNotFoundHandler(function (request: FastifyRequest, reply: FastifyReply): void {
+app.setNotFoundHandler((request: FastifyRequest, reply: FastifyReply): void => {
     appLogger.info("setNotFoundHandler | url: ", request.url);
     reply.status(ERROR_404.ROUTER_NOT_FOUND.statusCode).send(ERROR_404.ROUTER_NOT_FOUND);
 });
 
-app.setErrorHandler(function (error: FastifyError, request: FastifyRequest, reply: FastifyReply): void {
+app.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: FastifyReply): void => {
     appLogger.info("setErrorHandler | url: ", request.url);
     appLogger.error("setErrorHandler | error: ", error);
     reply.status(ERROR_500.UNKNOWN.statusCode).send(ERROR_500.UNKNOWN);
