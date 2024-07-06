@@ -27,7 +27,7 @@ describe("UserController", () => {
 			getById: jest.fn().mockResolvedValue({}),
 			all: jest.fn().mockResolvedValue([]),
 			delete: jest.fn().mockResolvedValue({ id: 1 }),
-		} as any;
+		} as jest.Mocked<UserService>;
 
 		userController = new UserController(userService);
 
@@ -40,7 +40,7 @@ describe("UserController", () => {
 			},
 			params: {},
 			query: {},
-		} as any as FastifyRequest;
+		} as unknown as FastifyRequest;
 
 		requestUpdate = {
 			body: {
@@ -51,30 +51,30 @@ describe("UserController", () => {
 			},
 			params: { id: "1" },
 			query: {},
-		} as any as FastifyRequest;
+		} as unknown as FastifyRequest;
 
 		requestGet = {
 			body: {},
 			params: { id: "1" },
 			query: {},
-		} as any as FastifyRequest;
+		} as unknown as FastifyRequest;
 
 		requestDelete = {
 			body: {},
 			params: { id: "1" },
 			query: {},
-		} as any as FastifyRequest;
+		} as unknown as FastifyRequest;
 
 		requestAll = {
 			body: {},
 			params: { id: "1" },
 			query: { before: "1", after: "10", limit: "10" },
-		} as any as FastifyRequest;
+		} as unknown as FastifyRequest;
 
 		reply = {
 			status: jest.fn().mockReturnThis(),
 			send: jest.fn().mockReturnThis(),
-		} as any as FastifyReply;
+		} as unknown as FastifyReply;
 	});
 
 	afterEach(() => {

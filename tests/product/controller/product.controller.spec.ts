@@ -18,7 +18,7 @@ describe("ProductController", () => {
 	beforeEach(() => {
 		productService = {
 			create: jest.fn().mockReturnValue({ id: 1 }),
-		} as any;
+		} as jest.Mocked<ProductService>;
 
 		productController = new ProductController(productService);
 
@@ -29,7 +29,7 @@ describe("ProductController", () => {
 		reply = {
 			status: jest.fn().mockReturnThis(),
 			send: jest.fn().mockReturnThis(),
-		} as any as FastifyReply;
+		} as unknown as FastifyReply;
 	});
 
 	afterEach(() => {
